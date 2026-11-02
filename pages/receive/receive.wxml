@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="title">📋 接单广场</view>
+  
+  <view wx:for="{{waitingOrders}}" wx:key="id" class="order-card">
+    <view class="order-header">
+      <text class="publisher">👤 {{item.publisherNickname}}</text>
+      <text class="price">¥{{item.price}}</text>
+    </view>
+    
+    <view class="order-desc">
+      <text>{{item.description}}</text>
+    </view>
+    
+    <view class="order-location">
+      <text>📍 {{item.location}}</text>
+    </view>
+    
+    <view class="order-remark" wx:if="{{item.remark}}">
+      <text>📝 {{item.remark}}</text>
+    </view>
+    
+    <button class="take-btn" bindtap="takeOrder" data-id="{{item.id}}">🤝 立即接单</button>
+  </view>
+  
+  <view wx:if="{{waitingOrders.length === 0}}" class="empty-state">
+    <text class="empty-text">暂无待接订单</text>
+    <button class="empty-btn" bindtap="goToPlace">去发布订单</button>
+  </view>
+</view>

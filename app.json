@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/place/place",
+    "pages/receive/receive",
+    "pages/orders/orders",
+    "pages/profile/profile",
+    "pages/chatList/chatList",
+    "pages/chat/chat"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "荔园帮帮",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f8fafd",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#8e99ab",
+    "selectedColor": "#2266ff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/place/place",
+        "text": "下单"
+      },
+      {
+        "pagePath": "pages/receive/receive",
+        "text": "接单"
+      },
+      {
+        "pagePath": "pages/orders/orders",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

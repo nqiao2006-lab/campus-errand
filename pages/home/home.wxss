@@ -1,0 +1,167 @@
+/* pages/home/home.wxss */
+.container {
+  min-height: 100vh;
+  background: #f8fafd;
+  padding: 32rpx;
+}
+
+.header-card {
+  background: linear-gradient(135deg, #2266ff 0%, #6096ff 100%);
+  border-radius: 32rpx;
+  padding: 40rpx;
+  margin-bottom: 32rpx;
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  margin-bottom: 32rpx;
+}
+
+.avatar {
+  width: 96rpx;
+  height: 96rpx;
+  background: rgba(255,255,255,0.3);
+  border-radius: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  font-weight: 600;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.credit {
+  font-size: 24rpx;
+  opacity: 0.9;
+  margin-top: 8rpx;
+  display: block;
+}
+
+.stats {
+  display: flex;
+  gap: 48rpx;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-num {
+  font-size: 40rpx;
+  font-weight: 700;
+  display: block;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 32rpx;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  background: white;
+  border-radius: 28rpx;
+  padding: 28rpx;
+  border: none;
+  font-size: 26rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.04);
+}
+
+.action-btn.primary { color: #2266ff; }
+.action-btn.secondary { color: #10b981; }
+.action-btn.info { color: #f59e0b; }
+
+.emoji { font-size: 44rpx; }
+
+.section {
+  margin-bottom: 32rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1e2a3e;
+}
+
+.badge {
+  background: #eef2ff;
+  padding: 8rpx 20rpx;
+  border-radius: 60rpx;
+  font-size: 24rpx;
+  color: #2266ff;
+}
+
+.card {
+  background: white;
+  border-radius: 28rpx;
+  padding: 32rpx;
+}
+
+.desc {
+  font-size: 28rpx;
+  color: #334155;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.desc-muted {
+  font-size: 24rpx;
+  color: #94a3b8;
+}
+
+.order-list {
+  background: white;
+  border-radius: 28rpx;
+  overflow: hidden;
+}
+
+.order-item {
+  padding: 28rpx;
+  border-bottom: 2rpx solid #f0f2f6;
+}
+
+.order-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.order-desc {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.order-price {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #ff7a2f;
+}
+
+.order-location {
+  font-size: 24rpx;
+  color: #94a3b8;
+}

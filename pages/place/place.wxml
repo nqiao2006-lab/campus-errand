@@ -1,0 +1,264 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="header">
+    <text class="header-title">发布新订单</text>
+    <text class="header-subtitle">填写信息，让同学帮你跑腿</text>
+  </view>
+
+  <scroll-view class="form-scroll" scroll-y>
+    <!-- 订单类型 -->
+    <view class="card">
+      <view class="card-title">
+        <text>📦</text>
+        <text>订单类型</text>
+        <text class="required">*</text>
+      </view>
+      <view class="type-grid">
+        <view class="type-item {{orderType === 'snack' ? 'active' : ''}}" data-type="snack" bindtap="selectType">
+          <text class="type-icon">🍢</text>
+          <text>宵夜街代购</text>
+        </view>
+        <view class="type-item {{orderType === 'canteen' ? 'active' : ''}}" data-type="canteen" bindtap="selectType">
+          <text class="type-icon">🍱</text>
+          <text>食堂代购</text>
+        </view>
+        <view class="type-item {{orderType === 'express' ? 'active' : ''}}" data-type="express" bindtap="selectType">
+          <text class="type-icon">📦</text>
+          <text>快递代拿</text>
+        </view>
+        <view class="type-item {{orderType === 'other' ? 'active' : ''}}" data-type="other" bindtap="selectType">
+          <text class="type-icon">📝</text>
+          <text>其他</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 物品描述 -->
+    <view class="card">
+      <view class="card-title">
+        <text>📝</text>
+        <text>物品描述</text>
+        <text class="required">*</text>
+        <text class="tag">公开</text>
+      </view>
+      <textarea 
+        class="textarea" 
+        placeholder="例：去二期顺丰驿站取快递，送到紫罗兰宿舍楼"
+        value="{{description}}"
+        bindinput="onDescriptionInput"
+        maxlength="200"
+      />
+      <view class="char-count">{{description.length}}/200</view>
+    </view>
+
+    <!-- 取件地点 -->
+    <view class="card">
+      <view class="card-title">
+        <text>📍</text>
+        <text>取件地点</text>
+        <text class="required">*</text>
+        <text class="tag">公开</text>
+      </view>
+      <view class="location-tags">
+        <view class="location-tag {{pickupLocation === '紫罗兰' ? 'active' : ''}}" data-loc="紫罗兰" bindtap="selectPickupLocation">紫罗兰宿舍楼</view>
+        <view class="location-tag {{pickupLocation === '三角梅' ? 'active' : ''}}" data-loc="三角梅" bindtap="selectPickupLocation">三角梅宿舍楼</view>
+        <view class="location-tag {{pickupLocation === '冬青树' ? 'active' : ''}}" data-loc="冬青树" bindtap="selectPickupLocation">冬青树宿舍楼</view>
+        <view class="location-tag {{pickupLocation === '四方楼' ? 'active' : ''}}" data-loc="四方楼" bindtap="selectPickupLocation">四方楼</view>
+        <view class="location-tag {{pickupLocation === 'other' ? 'active' : ''}}" data-loc="other" bindtap="selectPickupLocation">其他地点</view>
+      </view>
+      <input 
+        wx:if="{{pickupLocation === 'other'}}"
+        class="custom-input" 
+        placeholder="请输入取件地点"
+        value="{{customPickup}}"
+        bindinput="onCustomPickupInput"
+      />
+    </view>
+
+    <!-- 私密信息 -->
+    <view class="card private-card">
+      <view class="card-title">
+        <text>🔒</text>
+        <text>私密信息</text>
+        <text class="private-badge">接单后可见</text>
+      </view>
+      
+      <view class="private-field">
+        <text class="field-label">取件码/订单号</text>
+        <input 
+          class="private-input" 
+          placeholder="如：取件码123456"
+          value="{{pickupCode}}"
+          bindinput="onPickupCodeInput"
+        />
+        <text class="lock-icon">🔒</text>
+      </view>
+      
+      <view class="private-field">
+        <text class="field-label">具体地点/门牌号</text>
+        <input 
+          class="private-input" 
+          placeholder="如：紫罗兰1111"
+          value="{{roomNumber}}"
+          bindinput="onRoomNumberInput"
+        />
+        <text class="lock-icon">🔒</text>
+      </view>
+      
+      <view class="private-field">
+        <text class="field-label">联系电话</text>
+        <input 
+          class="private-input" 
+          type="number"
+          placeholder="接单后可联系"
+          value="{{contactPhone}}"
+          bindinput="onContactPhoneInput"
+        />
+        <text class="lock-icon">🔒</text>
+      </view>
+      
+      <view class="private-tip">
+        <text>⚠️ 以上信息仅在接单后显示，保护隐私</text>
+      </view>
+    </view>
+
+    <!-- 送达地点 -->
+    <view class="card">
+      <view class="card-title">
+        <text>🏠</text>
+        <text>送达地点</text>
+        <text class="required">*</text>
+        <text class="tag">公开</text>
+      </view>
+      <view class="location-tags">
+        <view class="location-tag {{deliveryLocation === '紫罗兰' ? 'active' : ''}}" data-loc="紫罗兰" bindtap="selectDeliveryLocation">紫罗兰宿舍楼</view>
+        <view class="location-tag {{deliveryLocation === '三角梅' ? 'active' : ''}}" data-loc="三角梅" bindtap="selectDeliveryLocation">三角梅宿舍楼</view>
+        <view class="location-tag {{deliveryLocation === '冬青树' ? 'active' : ''}}" data-loc="冬青树" bindtap="selectDeliveryLocation">冬青树宿舍楼</view>
+        <view class="location-tag {{deliveryLocation === '四方楼' ? 'active' : ''}}" data-loc="四方楼" bindtap="selectDeliveryLocation">四方楼</view>
+        <view class="location-tag {{deliveryLocation === 'other' ? 'active' : ''}}" data-loc="other" bindtap="selectDeliveryLocation">其他地点</view>
+      </view>
+      <input 
+        wx:if="{{deliveryLocation === 'other'}}"
+        class="custom-input" 
+        placeholder="请输入送达地点"
+        value="{{customDelivery}}"
+        bindinput="onCustomDeliveryInput"
+      />
+    </view>
+
+    <!-- 价格 -->
+    <view class="card">
+      <view class="card-title">
+        <text>💰</text>
+        <text>支付价格</text>
+        <text class="required">*</text>
+      </view>
+      
+      <view class="price-input-wrapper">
+        <text class="price-symbol">¥</text>
+        <input class="price-input" type="digit" placeholder="0.00" value="{{price}}" bindinput="onPriceInput" />
+      </view>
+      
+      <view class="price-tags">
+        <view class="price-tag {{price === '3' ? 'active' : ''}}" data-price="3" bindtap="selectPrice">¥3</view>
+        <view class="price-tag {{price === '5' ? 'active' : ''}}" data-price="5" bindtap="selectPrice">¥5</view>
+        <view class="price-tag {{price === '8' ? 'active' : ''}}" data-price="8" bindtap="selectPrice">¥8</view>
+        <view class="price-tag {{price === '10' ? 'active' : ''}}" data-price="10" bindtap="selectPrice">¥10</view>
+        <view class="price-tag {{price === '12' ? 'active' : ''}}" data-price="12" bindtap="selectPrice">¥12</view>
+        <view class="price-tag {{price === '15' ? 'active' : ''}}" data-price="15" bindtap="selectPrice">¥15</view>
+      </view>
+    </view>
+
+    <!-- 时间设置 -->
+    <view class="card">
+      <view class="card-title">
+        <text>⏱️</text>
+        <text>时间设置</text>
+      </view>
+      
+      <view class="time-section">
+        <view class="time-label">等待接单时间</view>
+        <view class="time-slider-wrapper">
+          <slider 
+            class="time-slider"
+            min="5" max="60" step="5" 
+            value="{{waitTime}}"
+            bindchange="onWaitTimeChange"
+            activeColor="#667eea"
+          />
+          <view class="time-value">{{waitTime}}分钟</view>
+        </view>
+        <view class="time-desc">超时无人接单自动取消</view>
+      </view>
+
+      <view class="time-section">
+        <view class="time-label">期望送达时间</view>
+        <view class="delivery-time-tags">
+          <view class="delivery-time-tag {{expectedDelivery === '15' ? 'active' : ''}}" data-time="15" bindtap="selectExpectedDelivery">15分钟</view>
+          <view class="delivery-time-tag {{expectedDelivery === '30' ? 'active' : ''}}" data-time="30" bindtap="selectExpectedDelivery">30分钟</view>
+          <view class="delivery-time-tag {{expectedDelivery === '45' ? 'active' : ''}}" data-time="45" bindtap="selectExpectedDelivery">45分钟</view>
+          <view class="delivery-time-tag {{expectedDelivery === '60' ? 'active' : ''}}" data-time="60" bindtap="selectExpectedDelivery">60分钟</view>
+          <view class="delivery-time-tag {{expectedDelivery === 'custom' ? 'active' : ''}}" data-time="custom" bindtap="selectExpectedDelivery">自定义</view>
+        </view>
+        
+        <view wx:if="{{expectedDelivery === 'custom'}}" class="custom-time-wrapper">
+          <input class="custom-time-input" type="number" placeholder="请输入分钟数" value="{{customDeliveryTime}}" bindinput="onCustomDeliveryTimeInput" />
+          <text>分钟</text>
+        </view>
+        
+        <view class="expected-result" wx:if="{{finalExpectedDelivery}}">
+          <text>期望送达：{{finalExpectedDelivery}}</text>
+          <text wx:if="{{expectedDeliveryWarning}}" class="warning">{{expectedDeliveryWarning}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 备注 -->
+    <view class="card">
+      <view class="card-title">
+        <text>📌</text>
+        <text>备注信息</text>
+      </view>
+      <textarea class="textarea" placeholder="例如：需要帮忙带筷子、尽量在12点前送到" value="{{remark}}" bindinput="onRemarkInput" maxlength="100" />
+    </view>
+
+    <!-- 订单预览 -->
+    <view class="summary-card">
+      <view class="summary-title">订单信息</view>
+      <view class="summary-item">
+        <text>订单类型</text>
+        <text>{{orderTypeText}}</text>
+      </view>
+      <view class="summary-item">
+        <text>取件地点</text>
+        <text>{{finalPickupLocation || '未选择'}}</text>
+      </view>
+      <view class="summary-item">
+        <text>送达地点</text>
+        <text>{{finalDeliveryLocation || '未选择'}}</text>
+      </view>
+      <view class="summary-item">
+        <text>支付价格</text>
+        <text class="price-highlight">¥{{price || 0}}</text>
+      </view>
+      <view class="summary-item">
+        <text>等待接单</text>
+        <text>{{waitTime}}分钟</text>
+      </view>
+      <view class="summary-item" wx:if="{{finalExpectedDelivery}}">
+        <text>期望送达</text>
+        <text>{{finalExpectedDelivery}}</text>
+      </view>
+      <view class="privacy-note">
+        <text>🔒 具体门牌号、取件码仅接单后可见</text>
+      </view>
+    </view>
+
+    <!-- 发布按钮 -->
+    <button class="publish-btn" bindtap="publishOrder" disabled="{{!canPublish}}">
+      {{publishing ? '发布中...' : '发布订单'}}
+    </button>
+    
+    <view class="bottom-space"></view>
+  </scroll-view>
+</view>

@@ -1,0 +1,195 @@
+.container {
+  min-height: 100vh;
+  background: #f8fafd;
+  padding-bottom: 32rpx;
+}
+
+/* Tab切换栏 */
+.tabs {
+  display: flex;
+  background: white;
+  padding: 0 32rpx;
+  border-bottom: 2rpx solid #f0f2f6;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f8fafd;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 28rpx 0;
+  font-size: 30rpx;
+  color: #64748b;
+  position: relative;
+}
+
+.tab-item.active {
+  color: #2266ff;
+  font-weight: 600;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: #2266ff;
+  border-radius: 4rpx;
+}
+
+/* 订单卡片 */
+.order-card {
+  background: white;
+  border-radius: 28rpx;
+  padding: 28rpx;
+  margin: 24rpx 24rpx 0 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 2rpx solid #f0f2f6;
+}
+
+.order-desc {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1e2a3e;
+  flex: 1;
+}
+
+.status {
+  font-size: 24rpx;
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
+}
+
+.status.waiting {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status.accepted {
+  background: #dcfce7;
+  color: #10b981;
+}
+
+.status.canceled {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.order-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+  font-size: 26rpx;
+  color: #64748b;
+}
+
+.price {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ff7a2f;
+}
+
+.order-remark {
+  font-size: 24rpx;
+  color: #f59e0b;
+  padding: 12rpx;
+  background: #fef3c7;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 联系方式区域 */
+.contact-section {
+  background: #f0f7ff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin: 16rpx 0;
+}
+
+.contact-info {
+  font-size: 26rpx;
+  color: #1e2a3e;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 2rpx solid #e0ecff;
+}
+
+.chat-btn {
+  background: #2266ff;
+  color: white;
+  border: none;
+  border-radius: 40rpx;
+  padding: 16rpx 0;
+  font-size: 28rpx;
+  font-weight: 500;
+  width: 100%;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20rpx;
+  padding-top: 16rpx;
+  border-top: 2rpx solid #f0f2f6;
+}
+
+.cancel-btn {
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  border-radius: 40rpx;
+  padding: 16rpx 32rpx;
+  font-size: 26rpx;
+  width: auto;
+}
+
+.complete-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 40rpx;
+  padding: 16rpx 32rpx;
+  font-size: 26rpx;
+  width: auto;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 120rpx 0;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 32rpx;
+}
+
+.empty-btn {
+  background: #2266ff;
+  color: white;
+  border: none;
+  border-radius: 60rpx;
+  font-size: 28rpx;
+  padding: 20rpx 40rpx;
+  width: auto;
+  display: inline-block;
+}
+
+.card-actions button:first-child {
+  background: #ff6b6b;
+}

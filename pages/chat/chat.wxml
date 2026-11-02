@@ -1,0 +1,16 @@
+<!-- pages/chat/chat.wxml -->
+<view class="chat-container">
+  <scroll-view class="chat-messages" scroll-y scroll-top="{{scrollTop}}" scroll-into-view="msg-{{messages.length-1}}">
+    <view class="message-row {{item.senderId === userInfo.id ? 'message-mine' : 'message-other'}}" 
+          wx:for="{{messages}}" wx:key="id" id="msg-{{index}}">
+      <view class="bubble {{item.senderId === userInfo.id ? 'bubble-mine' : 'bubble-other'}}">
+        {{item.content}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="chat-input-area">
+    <input class="chat-input" placeholder="输入消息..." value="{{inputText}}" bindinput="onInput" confirm-type="send" bindconfirm="sendMessage" />
+    <button class="send-btn" bindtap="sendMessage">发送</button>
+  </view>
+</view>

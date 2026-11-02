@@ -1,0 +1,50 @@
+<view style="padding: 40rpx 32rpx; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh;">
+  <view style="text-align: center; margin-bottom: 60rpx;">
+    <text style="font-size: 56rpx; font-weight: bold; color: white; display: block;">荔园帮帮</text>
+    <text style="font-size: 28rpx; color: rgba(255,255,255,0.9);">深圳大学丽湖校区</text>
+  </view>
+
+  <view style="background: white; border-radius: 32rpx; padding: 40rpx 32rpx;">
+    <!-- 昵称 -->
+    <view style="margin-bottom: 32rpx;">
+      <text style="font-size: 28rpx; font-weight: 500; display: block; margin-bottom: 16rpx;">昵称</text>
+      <view style="display: flex; gap: 16rpx;">
+        <input style="flex: 1; padding: 20rpx; border: 1px solid #e5e5e5; border-radius: 16rpx;" placeholder="怎么称呼你" value="{{nickname}}" bindinput="onNicknameInput" />
+        <button style="background: #e8f0fe; color: #2266ff; font-size: 26rpx; padding: 0 24rpx;" bindtap="getWxNickname" size="mini">微信昵称</button>
+      </view>
+    </view>
+
+    <!-- 手机号 -->
+    <view style="margin-bottom: 32rpx;">
+      <text style="font-size: 28rpx; font-weight: 500; display: block; margin-bottom: 16rpx;">手机号</text>
+      <input style="width: 100%; padding: 20rpx; border: 1px solid #e5e5e5; border-radius: 16rpx;" type="number" placeholder="用于联系" value="{{phone}}" bindinput="onPhoneInput" />
+    </view>
+
+    <!-- 学号 -->
+    <view style="margin-bottom: 32rpx;">
+      <text style="font-size: 28rpx; font-weight: 500; display: block; margin-bottom: 16rpx;">学号</text>
+      <input style="width: 100%; padding: 20rpx; border: 1px solid #e5e5e5; border-radius: 16rpx;" placeholder="2024xxxx" value="{{studentId}}" bindinput="onStudentIdInput" />
+    </view>
+
+    <!-- 学生证上传 -->
+    <view style="margin-bottom: 32rpx;">
+      <text style="font-size: 28rpx; font-weight: 500; display: block; margin-bottom: 16rpx;">📸 上传学生证照片</text>
+      <view style="border: 2rpx dashed #ccc; border-radius: 16rpx; padding: 40rpx; text-align: center; background: #fafafa;" bindtap="uploadStudentImg">
+        <image wx:if="{{studentImgPath}}" style="width: 100%; max-height: 200rpx; border-radius: 12rpx;" src="{{studentImgPath}}" mode="aspectFill" />
+        <text wx:else>+ 点击上传学生证图片</text>
+      </view>
+    </view>
+
+    <!-- 人脸识别 -->
+    <view style="margin-bottom: 32rpx;">
+      <text style="font-size: 28rpx; font-weight: 500; display: block; margin-bottom: 16rpx;">😀 人脸识别</text>
+      <view style="border: 2rpx dashed #ccc; border-radius: 16rpx; padding: 40rpx; text-align: center; background: #fafafa;" bindtap="uploadFaceImg">
+        <image wx:if="{{faceImgPath}}" style="width: 100%; max-height: 200rpx; border-radius: 12rpx;" src="{{faceImgPath}}" mode="aspectFill" />
+        <text wx:else>📷 点击拍照进行人脸识别</text>
+      </view>
+      <text style="font-size: 22rpx; color: #999; display: block; margin-top: 12rpx;">仅用于验证深大学生身份，后台加密审核</text>
+    </view>
+
+    <button style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 48rpx; padding: 24rpx; font-size: 32rpx; margin-top: 32rpx;" bindtap="submitVerify">提交认证</button>
+  </view>
+</view>

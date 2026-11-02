@@ -1,0 +1,63 @@
+<!-- pages/home/home.wxml -->
+<view class="container">
+  <view class="header-card">
+    <view class="user-info">
+      <view class="avatar">{{userInfo.avatar}}</view>
+      <view class="user-detail">
+        <text class="nickname">{{userInfo.nickname}}</text>
+        <text class="credit">信用分 {{userInfo.credit}}</text>
+      </view>
+    </view>
+    <view class="stats">
+      <view class="stat-item">
+        <text class="stat-num">{{userInfo.publishedOrders || 0}}</text>
+        <text class="stat-label">发布</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-num">{{userInfo.completedOrders || 0}}</text>
+        <text class="stat-label">完成</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-buttons">
+    <button class="action-btn primary" bindtap="goToPlace">
+      <text class="emoji">📦</text>
+      <text>发布订单</text>
+    </button>
+    <button class="action-btn secondary" bindtap="goToReceive">
+      <text class="emoji">🤝</text>
+      <text>接单广场</text>
+    </button>
+    <button class="action-btn info" bindtap="goToChatList">
+      <text class="emoji">💬</text>
+      <text>聊天记录</text>
+    </button>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">📢 平台动态</text>
+      <text class="badge">{{pendingOrdersCount}}个待接单</text>
+    </view>
+    <view class="card">
+      <text class="desc">✨ 一键下单，校园跑腿/代取快递/带饭轻松解决</text>
+      <text class="desc-muted">🔒 手机号/学号仅后台可见，安心交易</text>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{recentOrders.length > 0}}">
+    <view class="section-header">
+      <text class="section-title">🕐 最新订单</text>
+    </view>
+    <view class="order-list">
+      <view class="order-item" wx:for="{{recentOrders}}" wx:key="id">
+        <view class="order-info">
+          <text class="order-desc">{{item.description}}</text>
+          <text class="order-price">¥{{item.price}}</text>
+        </view>
+        <text class="order-location">{{item.location}}</text>
+      </view>
+    </view>
+  </view>
+</view>

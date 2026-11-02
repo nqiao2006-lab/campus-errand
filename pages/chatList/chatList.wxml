@@ -1,0 +1,49 @@
+<!-- pages/chatList/chatList.wxml -->
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="header-title">聊天记录</text>
+    <text class="header-subtitle">与接单小伙伴的沟通记录</text>
+  </view>
+
+  <!-- 聊天列表 -->
+  <view class="chat-list" wx:if="{{conversations.length > 0}}">
+    <block wx:for="{{conversations}}" wx:key="conversationId">
+      <view class="chat-item" bindtap="goToChat" data-conv="{{item}}">
+        <!-- 头像 -->
+        <view class="chat-avatar">
+          <text class="avatar-text">{{item.otherAvatar || item.otherNickname.charAt(0)}}</text>
+          <!-- 未读红点 -->
+          <view class="unread-dot" wx:if="{{item.unreadCount > 0}}"></view>
+        </view>
+        
+        <!-- 聊天信息 -->
+        <view class="chat-info">
+          <view class="chat-header">
+            <text class="chat-name">{{item.otherNickname || '用户'}}</text>
+            <text class="chat-time">{{item.lastTimeFormatted}}</text>
+          </view>
+          <view class="chat-preview">
+            <text class="last-msg">{{item.lastMsg || '暂无消息'}}</text>
+            <view class="order-tag" wx:if="{{item.order}}">
+              <text class="tag-text">订单：{{item.order.description}}</text>
+            </view>
+          </view>
+        </view>
+        
+        <!-- 未读数量 -->
+        <view class="unread-badge" wx:if="{{item.unreadCount > 0}}">
+          <text>{{item.unreadCount > 99 ? '99+' : item.unreadCount}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <view class="empty-icon">💬</view>
+    <text class="empty-title">暂无聊天记录</text>
+    <text class="empty-desc">去接单或发布订单，与同学沟通吧~</text>
+    <button class="empty-btn" bindtap="goToReceive">去接单广场</button>
+  </view>
+</view>
